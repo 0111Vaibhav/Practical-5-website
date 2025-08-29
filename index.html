@@ -55,6 +55,19 @@
       padding: 10px;
       border-radius: 5px;
     }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #45a049;
+    }
     footer {
       margin-top: 40px;
       padding: 20px;
@@ -64,16 +77,24 @@
     }
   </style>
 
+  <!-- Google Analytics (GA4) -->
+  <!-- Replace G-M94WEMDEQK with your Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M94WEMDEQK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M94WEMDEQK');
 
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-M94WEMDEQK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-M94WEMDEQK');
-</script>
+    // Event tracking for buttons
+    function trackEvent(action, label) {
+      gtag('event', action, {
+        'event_category': 'Button',
+        'event_label': label
+      });
+      alert("Event Tracked: " + label); // just to confirm clicks while testing
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -92,13 +113,9 @@
 
   <section id="home">
     <h2>Home</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat, lacus et scelerisque aliquet, justo lorem egestas nunc, nec luctus velit mi sit amet nulla. Praesent volutpat est sit amet mauris tristique, sed malesuada lacus luctus.</p>
-  </section>
-
-  <section id="about">
-    <h2>About</h2>
-    <p>This website is created using <strong>HTML5</strong> and <strong>CSS3</strong>. It is hosted on GitHub Pages, a free hosting service for static websites.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ligula vel augue fermentum malesuada. Nullam non dui vitae odio dapibus dictum a sed ex.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <button onclick="trackEvent('like_click','Like Button')">👍 Like</button>
+    <button onclick="trackEvent('subscribe_click','Subscribe Button')">🔔 Subscribe</button>
   </section>
 
   <section id="features">
@@ -108,30 +125,14 @@
       <li>Free hosting using GitHub Pages</li>
       <li>Integrated with Google Analytics</li>
       <li>Responsive design for mobile and desktop</li>
-      <li>Easy to extend with more pages</li>
     </ul>
-  </section>
-
-  <section id="blog">
-    <h2>Blog</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus fermentum feugiat ipsum, vel dignissim magna tincidunt ac. Donec eu felis vel diam bibendum consequat. Duis consequat, nunc nec tempus varius, leo tortor blandit mauris, a egestas ligula neque sit amet sapien.</p>
-    <p>Morbi ac tincidunt orci, eget convallis odio. Integer consequat lectus non libero tincidunt porttitor. In sed ipsum non purus faucibus ultrices nec a mi.</p>
-  </section>
-
-  <section id="faq">
-    <h2>FAQ</h2>
-    <p><strong>Q1: What is this website for?</strong></p>
-    <p>A: This website is a practical exercise for building, hosting, and monitoring performance with Google Analytics.</p>
-    <p><strong>Q2: How was it built?</strong></p>
-    <p>A: Using only HTML and CSS, hosted on GitHub Pages.</p>
-    <p><strong>Q3: Can this be extended?</strong></p>
-    <p>A: Yes, more sections and pages can be added as needed.</p>
+    <button onclick="trackEvent('download_pdf','Download PDF Button')">📥 Download PDF</button>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
-    <p>You can reach out via email: <a href="mailto:student@example.com">student@example.com</a></p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus ex non orci accumsan, in laoreet ligula interdum.</p>
+    <p>Email: <a href="mailto:student@example.com">student@example.com</a></p>
+    <button onclick="trackEvent('contact_click','Contact Button')">📧 Contact Me</button>
   </section>
 
   <footer>
